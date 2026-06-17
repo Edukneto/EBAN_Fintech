@@ -1,0 +1,90 @@
+/* EBAN — Static version. Design tokens (HSL) */
+:root {
+  --background: 45 25% 96%;
+  --foreground: 0 0% 11%;
+  --surface: 0 0% 100%;
+  --surface-alt: 42 17% 92%;
+  --border: 42 14% 89%;
+  --muted-foreground: 0 0% 42%;
+  --primary: 148 100% 13%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 147 64% 51%;
+  --success: 152 95% 30%;
+  --icon-pix: 173 60% 47%;
+  --icon-pay: 232 86% 67%;
+  --icon-transfer: 25 90% 54%;
+  --icon-statement: 202 90% 54%;
+  --icon-register: 0 86% 65%;
+  --icon-deposit: 282 44% 47%;
+  --icon-invest: 48 89% 50%;
+  --icon-tax: 184 9% 53%;
+  --shadow-sm: 0 1px 2px 0 hsl(0 0% 11% / 0.05);
+  --shadow-md: 0 0 0 1px hsl(0 0% 11% / 0.04), 0 2px 4px -1px hsl(0 0% 11% / 0.06), 0 4px 8px -2px hsl(0 0% 11% / 0.04);
+  --shadow-lg: 0 0 0 1px hsl(0 0% 11% / 0.04), 0 4px 8px -2px hsl(0 0% 11% / 0.08), 0 8px 16px -4px hsl(0 0% 11% / 0.06);
+  --ease-settle: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html { font-family: 'Inter', system-ui, sans-serif; }
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+.font-display { font-family: 'Manrope', 'Inter', sans-serif; letter-spacing: -0.02em; }
+
+.bg-surface { background: hsl(var(--surface)); }
+.bg-surface-alt { background: hsl(var(--surface-alt)); }
+.bg-background { background: hsl(var(--background)); }
+.bg-primary { background: hsl(var(--primary)); }
+.text-primary-foreground { color: hsl(var(--primary-foreground)); }
+.text-foreground { color: hsl(var(--foreground)); }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.text-success { color: hsl(var(--success)); }
+.bg-accent { background: hsl(var(--accent)); }
+.border-border { border-color: hsl(var(--border)); }
+
+.shadow-soft-sm { box-shadow: var(--shadow-sm); }
+.shadow-soft-md { box-shadow: var(--shadow-md); }
+.shadow-soft-lg { box-shadow: var(--shadow-lg); }
+
+.transition-settle { transition: all 300ms var(--ease-settle); }
+
+.hover-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 500ms var(--ease-settle) both; }
+
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Sidebar active indicator */
+.nav-link.active { background: hsl(var(--surface-alt)); color: hsl(var(--foreground)); }
+.nav-link.active .nav-bar { opacity: 1; }
+.nav-link .nav-bar { opacity: 0; }
+
+/* Mobile top tabs */
+.top-link.active { border-color: hsl(var(--accent)); color: hsl(var(--foreground)); }
+
+/* Tabs in cadastros */
+.tab-btn .tab-underline { opacity: 0; transform: scaleX(0); transition: all 300ms var(--ease-settle); }
+.tab-btn.active { color: hsl(var(--foreground)); }
+.tab-btn.active .tab-underline { opacity: 1; transform: scaleX(1); }
+.tab-btn { color: hsl(var(--muted-foreground)); }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: hsl(var(--surface)); color: hsl(var(--foreground));
+  padding: 12px 16px; border-radius: 8px; box-shadow: var(--shadow-lg);
+  border: 1px solid hsl(var(--border));
+  transform: translateY(20px); opacity: 0;
+  transition: all 300ms var(--ease-settle); z-index: 100;
+  font-size: 14px; font-weight: 500;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* Scrollbar slim */
+.scrollbar-thin::-webkit-scrollbar { height: 4px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 2px; }

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EBAN — Demonstrações Financeiras</title>
+  <meta name="description" content="Indicadores e tendências financeiras da sua operação em tempo real." />
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="min-h-screen flex">
+    <aside id="sidebar" class="hidden md:flex w-64 shrink-0 flex-col border-r border-border bg-surface"></aside>
+    <div id="topbar" class="md:hidden fixed inset-x-0 top-0 z-30 bg-surface border-b border-border"></div>
+    <main class="flex-1 min-w-0 pt-16 md:pt-0">
+      <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-8 md:py-12 space-y-10">
+        <header class="flex flex-wrap items-end justify-between gap-4 animate-fade-up">
+          <div>
+            <p class="text-sm font-medium uppercase tracking-wider text-muted-foreground">Relatórios</p>
+            <h1 class="font-display font-bold text-3xl md:text-4xl mt-2">Demonstrações Financeiras</h1>
+            <p class="text-muted-foreground mt-2 max-w-xl">Indicadores e tendências da sua operação em tempo real.</p>
+          </div>
+          <button id="btnExportar" class="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-soft-sm hover:opacity-90 transition-settle">
+            <i data-lucide="download" class="w-4 h-4"></i> Exportar PDF
+          </button>
+        </header>
+
+        <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-xl bg-surface shadow-soft-md p-5 animate-fade-up">
+            <div class="flex items-center justify-between">
+              <div class="h-9 w-9 rounded-lg flex items-center justify-center" style="background:hsl(173 60% 47% / 0.12)"><i data-lucide="wallet" class="w-4 h-4" style="color:hsl(173 60% 47%)"></i></div>
+              <span class="text-xs font-medium text-success tabular-nums">+12,4%</span>
+            </div>
+            <p class="text-sm text-muted-foreground mt-5">Fluxo de caixa</p>
+            <p class="font-display font-bold text-xl mt-1 tabular-nums">R$ 20.900,00</p>
+          </div>
+          <div class="rounded-xl bg-surface shadow-soft-md p-5 animate-fade-up">
+            <div class="flex items-center justify-between">
+              <div class="h-9 w-9 rounded-lg flex items-center justify-center" style="background:hsl(152 95% 30% / 0.12)"><i data-lucide="arrow-down-to-line" class="w-4 h-4 text-success"></i></div>
+              <span class="text-xs font-medium text-success tabular-nums">+18,1%</span>
+            </div>
+            <p class="text-sm text-muted-foreground mt-5">Receita</p>
+            <p class="font-display font-bold text-xl mt-1 tabular-nums">R$ 52.300,00</p>
+          </div>
+          <div class="rounded-xl bg-surface shadow-soft-md p-5 animate-fade-up">
+            <div class="flex items-center justify-between">
+              <div class="h-9 w-9 rounded-lg flex items-center justify-center" style="background:hsl(25 90% 54% / 0.12)"><i data-lucide="arrow-up-from-line" class="w-4 h-4" style="color:hsl(25 90% 54%)"></i></div>
+              <span class="text-xs font-medium text-success tabular-nums">+9,2%</span>
+            </div>
+            <p class="text-sm text-muted-foreground mt-5">Despesa</p>
+            <p class="font-display font-bold text-xl mt-1 tabular-nums">R$ 31.400,00</p>
+          </div>
+          <div class="rounded-xl bg-surface shadow-soft-md p-5 animate-fade-up">
+            <div class="flex items-center justify-between">
+              <div class="h-9 w-9 rounded-lg flex items-center justify-center" style="background:hsl(48 89% 50% / 0.12)"><i data-lucide="circle-dollar-sign" class="w-4 h-4" style="color:hsl(48 89% 50%)"></i></div>
+              <span class="text-xs font-medium text-success tabular-nums">+22,7%</span>
+            </div>
+            <p class="text-sm text-muted-foreground mt-5">Lucro</p>
+            <p class="font-display font-bold text-xl mt-1 tabular-nums">R$ 20.900,00</p>
+          </div>
+        </section>
+
+        <section class="flex flex-wrap items-center gap-3 animate-fade-up">
+          <div class="inline-flex rounded-md bg-surface shadow-soft-sm p-1 border border-border">
+            <button class="period-btn text-muted-foreground px-3 py-1.5 text-sm font-medium rounded transition-settle">1M</button>
+            <button class="period-btn text-muted-foreground px-3 py-1.5 text-sm font-medium rounded transition-settle">3M</button>
+            <button class="period-btn bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium rounded transition-settle">6M</button>
+            <button class="period-btn text-muted-foreground px-3 py-1.5 text-sm font-medium rounded transition-settle">1A</button>
+          </div>
+          <button class="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3.5 py-2 text-sm font-medium hover:bg-surface-alt transition-settle">
+            <span class="text-muted-foreground">Categoria:</span><span>Todas</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 text-muted-foreground"></i>
+          </button>
+          <button class="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3.5 py-2 text-sm font-medium hover:bg-surface-alt transition-settle">
+            <span class="text-muted-foreground">Conta:</span><span>Empresarial</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 text-muted-foreground"></i>
+          </button>
+        </section>
+
+        <section class="rounded-xl bg-surface shadow-soft-md p-6 md:p-8 animate-fade-up">
+          <div class="flex items-start justify-between mb-6 flex-wrap gap-3">
+            <div>
+              <h2 class="font-semibold text-lg">Entradas e saídas detalhadas</h2>
+              <p class="text-sm text-muted-foreground mt-0.5">Comparação mensal</p>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+              <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full bg-primary"></span> Receita</span>
+              <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-full" style="background:hsl(25 90% 54%)"></span> Despesa</span>
+            </div>
+          </div>
+          <div class="h-80"><canvas id="chartDemonstracoes"></canvas></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/demonstracoes.js"></script>
+</body>
+</html>

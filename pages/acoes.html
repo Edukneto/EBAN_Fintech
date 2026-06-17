@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EBAN — Ações financeiras</title>
+  <meta name="description" content="Movimente seu dinheiro com Pix, transferências, pagamentos e investimentos." />
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="min-h-screen flex">
+    <aside id="sidebar" class="hidden md:flex w-64 shrink-0 flex-col border-r border-border bg-surface"></aside>
+    <div id="topbar" class="md:hidden fixed inset-x-0 top-0 z-30 bg-surface border-b border-border"></div>
+    <main class="flex-1 min-w-0 pt-16 md:pt-0">
+      <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-8 md:py-12 space-y-10">
+        <header class="animate-fade-up">
+          <p class="text-sm font-medium uppercase tracking-wider text-muted-foreground">Serviços</p>
+          <h1 class="font-display font-bold text-3xl md:text-4xl mt-2">Ações financeiras</h1>
+          <p class="text-muted-foreground mt-2 max-w-xl">Tudo o que você precisa para movimentar seu dinheiro, em um só lugar.</p>
+        </header>
+
+        <div id="services" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="../js/layout.js"></script>
+  <script>
+    const services = [
+      { label: 'Área Pix', desc: 'Envie e receba na hora', icon: 'qr-code', color: '173 60% 47%' },
+      { label: 'Pagar', desc: 'Boletos, contas e códigos', icon: 'banknote', color: '232 86% 67%' },
+      { label: 'Transferir', desc: 'TED, DOC e entre contas', icon: 'arrow-right-left', color: '25 90% 54%' },
+      { label: 'Registrar Lançamentos', desc: 'Boleto de depósito ou Pix', icon: 'piggy-bank', color: '282 44% 47%' },
+      { label: 'Investir', desc: 'CDB, Tesouro e fundos', icon: 'line-chart', color: '48 89% 50%' },
+      { label: 'Pagar Impostos', desc: 'DARF, GPS e tributos', icon: 'receipt', color: '184 9% 53%' },
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLayout(1);
+      document.getElementById('services').innerHTML = services.map((s, i) => `
+        <button class="text-left rounded-xl bg-surface shadow-soft-md p-6 transition-settle hover-lift animate-fade-up" style="animation-delay:${80 + i * 50}ms">
+          <div class="h-11 w-11 rounded-lg flex items-center justify-center" style="background:hsl(${s.color} / 0.12)">
+            <i data-lucide="${s.icon}" class="w-5 h-5" style="color:hsl(${s.color})"></i>
+          </div>
+          <h3 class="font-semibold text-base mt-5">${s.label}</h3>
+          <p class="text-sm text-muted-foreground mt-1">${s.desc}</p>
+          <div class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium">
+            Acessar <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </button>
+      `).join('');
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

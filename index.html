@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EBAN — Painel Principal</title>
+  <meta name="description" content="Painel financeiro EBAN com saldo, entradas, saídas e ações rápidas." />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="min-h-screen flex">
+    <!-- Sidebar (desktop) -->
+    <aside id="sidebar" class="hidden md:flex w-64 shrink-0 flex-col border-r border-border bg-surface"></aside>
+
+    <!-- Mobile top bar -->
+    <div id="topbar" class="md:hidden fixed inset-x-0 top-0 z-30 bg-surface border-b border-border"></div>
+
+    <!-- Main -->
+    <main class="flex-1 min-w-0 pt-16 md:pt-0">
+      <div class="mx-auto max-w-[1280px] px-6 md:px-10 py-8 md:py-12">
+        <div class="space-y-12">
+          <!-- Hero saldo -->
+          <section class="text-center pt-4 animate-fade-up">
+            <p class="text-sm font-medium uppercase tracking-wider text-muted-foreground">Saldo atual da conta</p>
+            <h1 class="font-display font-bold text-5xl md:text-7xl mt-4">
+              R$ <span id="saldo" class="tabular-nums">0,00</span>
+            </h1>
+            <div class="mt-5 flex items-center justify-center gap-4 text-sm flex-wrap">
+              <span class="inline-flex items-center gap-1.5 text-success font-medium">
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                <span id="variacaoMes"></span>
+              </span>
+              <span class="text-muted-foreground">·</span>
+              <span class="text-muted-foreground">Atualizado há 2min</span>
+            </div>
+          </section>
+
+          <!-- Charts -->
+          <section class="grid gap-6 lg:grid-cols-3 animate-fade-up">
+            <div class="lg:col-span-2 rounded-xl bg-surface shadow-soft-md p-6 md:p-8">
+              <div class="flex items-start justify-between mb-6 flex-wrap gap-3">
+                <div>
+                  <h2 class="font-semibold text-lg">Entradas vs. Saídas</h2>
+                  <p class="text-sm text-muted-foreground mt-0.5">Últimos 6 meses</p>
+                </div>
+                <div class="flex items-center gap-4 text-xs">
+                  <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-primary"></span> Entradas</span>
+                  <span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm" style="background:hsl(25 90% 54%)"></span> Saídas</span>
+                </div>
+              </div>
+              <div class="h-72"><canvas id="chartEntradasSaidas"></canvas></div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="rounded-xl bg-surface shadow-soft-md p-6">
+                <div class="flex items-center justify-between">
+                  <div class="h-10 w-10 rounded-lg flex items-center justify-center" style="background:hsl(152 95% 30% / 0.1)">
+                    <i data-lucide="trending-up" class="w-5 h-5 text-success"></i>
+                  </div>
+                  <span id="entradasPct" class="text-xs font-medium text-success"></span>
+                </div>
+                <p class="text-sm text-muted-foreground mt-5">Entradas no mês</p>
+                <p id="entradasValor" class="font-display font-bold text-2xl mt-1 tabular-nums"></p>
+              </div>
+              <div class="rounded-xl bg-surface shadow-soft-md p-6">
+                <div class="flex items-center justify-between">
+                  <div class="h-10 w-10 rounded-lg flex items-center justify-center" style="background:hsl(25 90% 54% / 0.1)">
+                    <i data-lucide="trending-down" class="w-5 h-5" style="color:hsl(25 90% 54%)"></i>
+                  </div>
+                  <span id="saidasPct" class="text-xs font-medium" style="color:hsl(25 90% 54%)"></span>
+                </div>
+                <p class="text-sm text-muted-foreground mt-5">Saídas no mês</p>
+                <p id="saidasValor" class="font-display font-bold text-2xl mt-1 tabular-nums"></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Quick actions -->
+          <section class="animate-fade-up">
+            <div class="flex items-end justify-between mb-5">
+              <h2 class="font-semibold text-lg">Ações rápidas</h2>
+              <a href="pages/acoes.html" class="text-sm text-muted-foreground hover:text-foreground transition-settle">Ver todas →</a>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              <a href="pages/acoes.html" class="rounded-xl bg-surface shadow-soft-md p-5 transition-settle hover-lift">
+                <div class="h-10 w-10 rounded-lg flex items-center justify-center mb-3" style="background:hsl(173 60% 47% / 0.12)"><i data-lucide="qr-code" class="w-5 h-5" style="color:hsl(173 60% 47%)"></i></div>
+                <p class="text-sm font-medium">Área Pix</p>
+              </a>
+              <a href="pages/acoes.html" class="rounded-xl bg-surface shadow-soft-md p-5 transition-settle hover-lift">
+                <div class="h-10 w-10 rounded-lg flex items-center justify-center mb-3" style="background:hsl(232 86% 67% / 0.12)"><i data-lucide="banknote" class="w-5 h-5" style="color:hsl(232 86% 67%)"></i></div>
+                <p class="text-sm font-medium">Pagar</p>
+              </a>
+              <a href="pages/acoes.html" class="rounded-xl bg-surface shadow-soft-md p-5 transition-settle hover-lift">
+                <div class="h-10 w-10 rounded-lg flex items-center justify-center mb-3" style="background:hsl(25 90% 54% / 0.12)"><i data-lucide="arrow-right-left" class="w-5 h-5" style="color:hsl(25 90% 54%)"></i></div>
+                <p class="text-sm font-medium">Transferir</p>
+              </a>
+              <a href="pages/demonstracoes.html" class="rounded-xl bg-surface shadow-soft-md p-5 transition-settle hover-lift">
+                <div class="h-10 w-10 rounded-lg flex items-center justify-center mb-3" style="background:hsl(202 90% 54% / 0.12)"><i data-lucide="file-text" class="w-5 h-5" style="color:hsl(202 90% 54%)"></i></div>
+                <p class="text-sm font-medium">Demonstrações</p>
+              </a>
+              <a href="pages/cadastros.html" class="rounded-xl bg-surface shadow-soft-md p-5 transition-settle hover-lift">
+                <div class="h-10 w-10 rounded-lg flex items-center justify-center mb-3" style="background:hsl(0 86% 65% / 0.12)"><i data-lucide="user-plus" class="w-5 h-5" style="color:hsl(0 86% 65%)"></i></div>
+                <p class="text-sm font-medium">Lançamentos</p>
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/finance-data.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
