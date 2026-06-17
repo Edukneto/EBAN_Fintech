@@ -1,6 +1,4 @@
-# EBAN — Versão estática
-
-Versão em HTML + CSS + Tailwind (via CDN) + JavaScript puro, sem build.
+# EBAN — Fintech Versão V3 
 
 ## Estrutura
 
@@ -8,7 +6,7 @@ Versão em HTML + CSS + Tailwind (via CDN) + JavaScript puro, sem build.
 static-site/
 ├── index.html              # Painel Principal (Dashboard)
 ├── css/
-│   └── styles.css          # Design tokens e utilitários
+│   └── styles.css          # Design e utilitários
 ├── js/
 │   ├── layout.js           # Sidebar + top bar mobile
 │   ├── finance-data.js     # Dados financeiros + invariante de saldo
@@ -39,9 +37,4 @@ npx serve static-site
 
 Depois acesse `http://SEU_IP_LOCAL:8080` pelo celular na mesma rede Wi-Fi.
 
-## Bibliotecas (via CDN)
 
-- Tailwind CSS (Play CDN)
-- Lucide Icons
-- Chart.js
-- Google Fonts: Inter + Manrope
